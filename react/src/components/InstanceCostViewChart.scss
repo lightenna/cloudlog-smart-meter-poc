@@ -1,0 +1,18 @@
+/* doughnut chart */
+.doughnut-wrapper {
+    width: 100%;
+    height: 100%;
+
+    // position the inner as an overlay on top of the chart
+    .doughnut-inner {
+        position: relative;
+        text-align: center;
+        vertical-align: middle;
+        top: -50%;
+        z-index: -1; // never intercept click or hover events
+        .per {
+            font-size: 0.7rem;
+        }
+    }
+}
+

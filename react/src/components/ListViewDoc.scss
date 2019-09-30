@@ -1,0 +1,8 @@
+.listviewdoc {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  .docelem:not(:first-child) {
+    margin-left: 0.5em;
+  }
+}

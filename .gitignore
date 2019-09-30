@@ -1,0 +1,24 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+.idea
+nohup.out
+
+# .tfvars files
+*.tfvars
+
+# ignore distribution folders and zips
+**/dist.zip
+**/dist-prod
+**/dist-staging
+
+# Node.js
+**/node_modules
+**/package-lock.json
+
+# ignore spurious logs
+react/debug.log

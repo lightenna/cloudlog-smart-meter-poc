@@ -1,0 +1,237 @@
+.app {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.unselectable {
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
+}
+
+.clear {
+  clear: both;
+}
+
+/* view manager sits beneath 4.0em header */
+#view-manager {
+  border: none;
+  height: 100%;
+
+  > .content {
+    padding: 0;
+  }
+}
+
+/* every view */
+.view {
+  border-top: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  box-sizing: border-box; // show border within the view
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  overflow-y: auto;
+  display: block; // views are block, subviews are flex (see row)
+  position: relative;
+
+  /* container views have a content line, then the subviews */
+  .content-header {
+    padding: 1px;
+    height: auto; // don't fix height here because we need to be able to expand
+    background: white;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin-left: -15px;
+
+    &.collapsing {
+      form {
+        width: 100%;
+      }
+    }
+    .form-group {
+      display: inline-block;
+    }
+
+    /* buttons in views: make label text unselectable */
+    label {
+      user-select: none;
+    }
+
+    /* not currently in use: soften look of custom checked boxes */
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+      border-color: gray;
+      background-color: lightgray;
+    }
+
+    /* remove blue halo around select boxes, fade to darker gray on select */
+    .form-control:focus {
+      box-shadow: none;
+      border-color: gray;
+    }
+
+    /* neatly align checkboxes */
+    input.form-check-input {
+      margin-top: 0.5rem;
+    }
+
+  }
+
+  .content-scrollable {
+    margin-top: 1.8em;
+  }
+
+  .content-fluid {
+    margin-top: 1.8em;
+    height: calc(100% - 2.0rem);
+  }
+
+  .subviews {
+    height: calc(100% - 2.0rem);
+    margin-top: 2.0em;
+  }
+
+  &.view-container, .view-container {
+    border: none;
+    /* container views have no content, just subviews */
+    > .subviews {
+      height: 100%;
+      margin-top: 0;
+    }
+  }
+
+  /* cross-view styles */
+  span.instance {
+    background: #dddddd;
+    border: 1px solid #bbbbbb;
+    font-size: 0.6em;
+    padding: 0.2em 0.5em 0.1em 0.5em;
+    // hack vertical alignment against rest of row
+    position: relative;
+    top: -0.2em;
+  }
+}
+
+
+/* bootstrap tweaks */
+select.form-control {
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+
+label.form-label {
+  float: left;
+  margin: 0 0.3rem 0 0;
+}
+
+div.modal-backdrop {
+  z-index: 1020;
+}
+
+/* all nav bars */
+.navbar {
+  height: 2.0rem;
+  .navbar-collapse {
+    border-bottom: none;
+    ul.navbar-nav {
+      li {
+        margin: 0 0.5em 0 0.5em;
+        a.nav-link {
+          padding: 0;
+        }
+      }
+    }
+    &.show {
+      border-bottom: 1px solid lightgray;
+      padding-bottom: 0.3em;
+    }
+  }
+
+  .form-group.firstleft {
+    float: left;
+    margin-left: 0;
+  }
+  .form-group {
+    margin: 0 0.1em 0.1em 1.0em; // undo _forms.scss
+    .form-control {
+      border-color: lightgray;
+    }
+  }
+
+  /* reduce size of navbar toggler on smaller displays */
+  .navbar-toggler {
+    padding: 0 0.25em 0.15em 0.25em;
+    float: none;
+    color: lightgray;
+    border-color: lightgray;
+    &:focus, &:active {
+      outline: none;
+      box-shadow: none;
+    }
+    .togactual {
+      width: 1.0em;
+      height: 1.0em;
+      font-size: 0.8em;
+    }
+  }
+}
+
+/* topnav bar only */
+.topnav {
+  height: 2.0rem; /* doesn't need explicit height */
+  padding: 0; /* zero pad crucial for navbar in overlay mode */
+
+  .navbar-collapse {
+    /* colour of navbar, critical when shown as overlay */
+    background-color: #f8f9fa; // .bg-light
+  }
+
+  .shared-buttons {
+    display: inline;
+    > * {
+      margin-right: .2rem;
+      height: 100%;
+    }
+    .doc-date-range {
+      float: left;
+      margin-right: .5rem;
+      font-size: 0.8rem;
+      padding-top: 0.3rem;
+      color: #BBBBBB;
+    }
+  }
+
+  .btn {
+    padding: 0 0.3rem 0.2rem 0.3rem;
+  }
+
+  a.navbar-brand {
+    padding: 0;
+    margin: 0 0.6rem 0.15rem 0.3em;
+  }
+
+  /* reduce size of navbar toggler on smaller displays */
+  .navbar-toggler {
+    padding: 0 0.25em 0.1em 0.25em;
+    margin: 0 3px 0 2px;
+    .navbar-toggler-icon {
+      width: 1.0em;
+      height: 1.0em;
+    }
+  }
+}
+
+/* mobile view hacks for POC */
+
+/* hide list view on narrow screens */
+@media (max-width: 900px) {
+  .poc #seq-0-0 {
+    width: 100% !important;
+  }
+  .poc #seq-0-1 {
+    width: 100% !important;
+    height: auto !important;
+  }
+}

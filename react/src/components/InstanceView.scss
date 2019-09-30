@@ -1,0 +1,40 @@
+.view-instance {
+  .icon {
+    margin-top: 0.15rem;
+    background-size: contain;
+    background-position: 50% 50%;
+    // important override to squash jstree default
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+  }
+
+  .icon-region, .icon-region-aws {
+    background-image: url('/images/icons/general/global_grey.png') !important;
+  }
+
+  .icon-instance, .icon-instance-aws, .view-instance .icon-service-aws-unknown {
+    background-image: url('/images/icons/aws/General_traditionalserver.png') !important;
+  }
+
+  .icon-instance-aws-volume {
+    background-image: url('/images/icons/aws/General_disk.png') !important;
+  }
+
+  .icon-service-aws-ec2 {
+    background-image: url('/images/icons/aws/Compute_AmazonEC2.png') !important;
+  }
+
+  .icon-service-aws-s3 {
+    background-image: url('/images/icons/aws/Storage_AmazonS3.png') !important;
+  }
+
+  .icon-service-aws-dynamodb {
+    background-image: url('/images/icons/aws/Database_AmazonDynamoDB.png') !important;
+  }
+
+  .jstree-container-ul {
+    // remove 15px added by parent .view
+    margin-left: -15px;
+  }
+}
+

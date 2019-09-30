@@ -1,0 +1,45 @@
+@-o-keyframes notifyFadeInOut {
+  0%   { background-color: #FFFFFF; }
+  5%   { background-color: #a1c4fd; }
+  100% { background-color: #FFFFFF; }
+}
+@keyframes notifyFadeInOut {
+  0%   { background-color: #FFFFFF; }
+  5%   { background-color: #a1c4fd; }
+  100% { background-color: #FFFFFF; }
+}
+
+
+.view-list {
+  .form-group.show-check {
+    float: left;
+  }
+  .showing {
+    font-size: 0.8rem;
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style-type: none;
+    }
+
+    // make docs flash when newly added
+    .listviewdoc.doc-enter-active {
+      -o-animation: notifyFadeInOut 3s ease-in-out;
+      animation: notifyFadeInOut 3s ease-in-out;
+    }
+
+    // reorder ul using rotate hack to put newest at top
+    &.newestAtTop {
+      transform: rotate(180deg);
+
+      li {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
+
+
